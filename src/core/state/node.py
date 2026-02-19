@@ -5,6 +5,7 @@ from operator import attrgetter
 @dataclass
 class NodeFlags:
     update : bool = True
+    propagate : bool = True
     debug : bool = False
 
 class Node:
@@ -18,10 +19,11 @@ class Node:
         pass 
 
     def update_all(self):
-        self.update()
-        for child in sorted(self.children, key = attrgetter("order")):
-            if child.flags.update:
-                child.update_all()
+        if self.flags.update:
+            self.update()
+        if self.flags.propagate:
+            for child in sorted(self.children, key = attrgetter("order")):
+                    child.update_all()
 
     def attach(self, node):
         self.children.append(node) 

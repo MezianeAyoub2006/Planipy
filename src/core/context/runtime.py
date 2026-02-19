@@ -10,6 +10,8 @@ class Runtime:
         self.screen = pygame.display.set_mode(resolution, flags) 
         self.clock = pygame.time.Clock()
         self.latest_time = time.perf_counter()
+        pygame.display.set_icon(pygame.image.load("assets/images/logo.png"))
+        pygame.display.set_caption("Planipy")
         self.dt = 1
 
     def _diseable_dpi(self):

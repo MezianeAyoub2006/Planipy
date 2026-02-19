@@ -26,10 +26,12 @@ class Renderer:
 
     def draw(self, element, **kwargs):
         task = {"order" : kwargs.get("order", 0)}
-        if isinstance(element, pygame.Rect):
+        if isinstance(element, str):
+            self.draw(self.context.assets[element], **kwargs)
+            return 
+        elif isinstance(element, pygame.Rect):
             task["type"] = "rect"
             task["color"] = kwargs.get("color", core.RED)
-           
         elif isinstance(element, pygame.Surface):
             task["type"] = "surface"
             task["position"] = kwargs.get("position", (0, 0))
