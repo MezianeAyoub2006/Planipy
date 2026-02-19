@@ -23,3 +23,6 @@ class Node:
             if child.flags.update:
                 child.update_all()
 
+    def attach(self, node):
+        self.children.append(node) 
+
