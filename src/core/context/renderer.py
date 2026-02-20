@@ -3,7 +3,6 @@ import src.core as core
 
 from operator import itemgetter
 
-
 class Renderer:
     def __init__(self, context):
         self.context = context 

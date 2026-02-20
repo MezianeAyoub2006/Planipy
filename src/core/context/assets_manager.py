@@ -26,6 +26,7 @@ class AssetsManager:
 
     def load_spritesheet(self, path, name, tile_size, scale = (1, 1)):
         spritesheet_image = self._load_image(path, scale) 
+        self.assets[name] = spritesheet_image 
         width = spritesheet_image.get_width()
         height = spritesheet_image.get_height()
         final_tile_size = (
